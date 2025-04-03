@@ -1,24 +1,33 @@
 return {
   'zaldih/themery.nvim',
   lazy = false,
+  dependencies = { 'navarasu/onedark.nvim' }, -- Ensure it loads on demand
   config = function()
+    local onedark = require 'onedark'
+
+    -- Function to apply OneDark styles correctly
+    local function set_onedark_style(style)
+      onedark.setup { style = style }
+      onedark.load()
+    end
+
     require('themery').setup {
       themes = {
         {
-          name = 'catppucin latte',
-          colorscheme = 'catppuccin-latte', -- Latte flavor
+          name = 'catppuccin latte',
+          colorscheme = 'catppuccin-latte',
         },
         {
-          name = 'catppucin frappe',
-          colorscheme = 'catppuccin-frappe', -- Frappe flavor
+          name = 'catppuccin frappe',
+          colorscheme = 'catppuccin-frappe',
         },
         {
-          name = 'catppucin macchiatto',
-          colorscheme = 'catppuccin-macchiato', -- Macchiato flavor
+          name = 'catppuccin macchiatto',
+          colorscheme = 'catppuccin-macchiato',
         },
         {
-          name = 'catppucin mocha',
-          colorscheme = 'catppuccin-mocha', -- Mocha flavor
+          name = 'catppuccin mocha',
+          colorscheme = 'catppuccin-mocha',
         },
         {
           name = 'tokyo night dark',
@@ -37,46 +46,52 @@ return {
           colorscheme = 'rose-pine-dawn',
         },
         {
-          name = 'one dark (use <C-q>',
+          name = 'OneDark Dark',
           colorscheme = 'onedark',
           config = function()
-            require('onedark').setup {
-              -- Main options --
-              style = 'dark', -- Default theme style
-              transparent = false, -- Show/hide background
-              term_colors = true, -- Change terminal color as per the selected theme style
-              ending_tildes = false, -- Show the end-of-buffer tildes
-              cmp_itemkind_reverse = false, -- reverse item kind highlights in cmp menu
-
-              -- Toggle theme style ---
-              toggle_style_key = '<C-q>', -- Set keybinding to toggle style
-              toggle_style_list = { 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer', 'light' }, -- List of styles to toggle between
-
-              -- Change code style ---
-              code_style = {
-                comments = 'italic',
-                keywords = 'none',
-                functions = 'none',
-                strings = 'none',
-                variables = 'none',
-              },
-
-              -- Lualine options --
-              lualine = {
-                transparent = false, -- lualine center bar transparency
-              },
-
-              -- Custom Highlights --
-              colors = {}, -- Override default colors
-              highlights = {}, -- Override highlight groups
-
-              -- Plugins Config --
-              diagnostics = {
-                darker = true, -- darker colors for diagnostic
-                undercurl = true, -- use undercurl instead of underline for diagnostics
-                background = true, -- use background color for virtual text
-              },
-            }
+            set_onedark_style 'dark'
+          end,
+        },
+        {
+          name = 'OneDark Darker',
+          colorscheme = 'onedark',
+          config = function()
+            set_onedark_style 'darker'
+          end,
+        },
+        {
+          name = 'OneDark Cool',
+          colorscheme = 'onedark',
+          config = function()
+            set_onedark_style 'cool'
+          end,
+        },
+        {
+          name = 'OneDark Deep',
+          colorscheme = 'onedark',
+          config = function()
+            set_onedark_style 'deep'
+          end,
+        },
+        {
+          name = 'OneDark Warm',
+          colorscheme = 'onedark',
+          config = function()
+            set_onedark_style 'warm'
+          end,
+        },
+        {
+          name = 'OneDark Warmer',
+          colorscheme = 'onedark',
+          config = function()
+            set_onedark_style 'warmer'
+          end,
+        },
+        {
+          name = 'OneDark Light',
+          colorscheme = 'onedark',
+          config = function()
+            set_onedark_style 'light'
           end,
         },
       },
