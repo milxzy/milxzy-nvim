@@ -214,7 +214,7 @@ return {
         golangci_lint_ls = {
           cmd = { "golangci-lint-langserver" },
           filetypes = {"go"},
-        }
+        },
         -- pyright = {},
         -- rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
